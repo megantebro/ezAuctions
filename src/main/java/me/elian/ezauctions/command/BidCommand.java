@@ -1,10 +1,7 @@
 package me.elian.ezauctions.command;
 
 import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.CommandAlias;
-import co.aikar.commands.annotation.CommandPermission;
-import co.aikar.commands.annotation.Default;
-import co.aikar.commands.annotation.Description;
+import co.aikar.commands.annotation.*;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import me.elian.ezauctions.Logger;
@@ -55,6 +52,7 @@ public class BidCommand extends BaseCommand {
 	}
 
 	@Default
+	@CommandCompletion("入札価格")
 	public void bid(Player player, @Default(value = "0") final double amount) {
 		scheduler.runAsyncPlayerCommandTask(player, () -> {
 			if (amount < 0) {

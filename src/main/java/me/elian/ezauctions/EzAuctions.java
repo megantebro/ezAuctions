@@ -6,6 +6,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import me.elian.ezauctions.command.AuctionCommand;
 import me.elian.ezauctions.command.BidCommand;
+import me.elian.ezauctions.command.EasyAuctionCommand;
 import me.elian.ezauctions.controller.AuctionController;
 import me.elian.ezauctions.controller.MessageController;
 import me.elian.ezauctions.controller.ScoreboardController;
@@ -147,10 +148,12 @@ public class EzAuctions extends JavaPlugin {
 	}
 
 	private void registerCommands(Injector injector) {
+		EasyAuctionCommand easyAuctionCommand = injector.getInstance(EasyAuctionCommand.class);
 		AuctionCommand auctionCommand = injector.getInstance(AuctionCommand.class);
 		BidCommand bidCommand = injector.getInstance(BidCommand.class);
 		PaperCommandManager manager = injector.getInstance(PaperCommandManager.class);
 
+		manager.registerCommand(easyAuctionCommand);
 		manager.registerCommand(auctionCommand);
 		manager.registerCommand(bidCommand);
 	}

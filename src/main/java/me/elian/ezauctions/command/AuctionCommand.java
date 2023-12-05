@@ -37,7 +37,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Singleton
-@CommandAlias("auction|auctions|auc|ezauctions")
+@CommandAlias("ezauctions")
 @CommandPermission("ezauctions.auction")
 @Description("Auction Command")
 public class AuctionCommand extends BaseCommand {
