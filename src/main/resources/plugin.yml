@@ -40,6 +40,7 @@ permissions:
       ezauctions.auction.scoreboard: true
       ezauctions.auction.queue: true
       ezauctions.bid: true
+      ezauctions.easyauction: true
   ezauctions.auction:
     default: false
   ezauctions.auction.start:
@@ -79,6 +80,8 @@ permissions:
   ezauctions.auction.update:
     default: false
   ezauctions.bid:
+    default: false
+  ezauctions.easyauction:
     default: false
   ezauctions.updatemessage:
     default: false
