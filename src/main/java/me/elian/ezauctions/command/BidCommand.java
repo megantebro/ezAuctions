@@ -159,6 +159,10 @@ public class BidCommand extends BaseCommand {
 
 		economy.withdrawPlayer(auctionPlayer.getOfflinePlayer(), amountToRemove);
 		bidList.placeBid(bid);
+
+		// Set the remaining seconds at least to the minimum
+		activeAuction.clampRemainingSeconds(config);
+
 		messages.sendAuctionMessage(player, "command.bid.placed", activeAuction);
 		messages.broadcastAuctionMessage(playerController.getOnlinePlayers(), activeAuction, true, "auction.bid");
 	}

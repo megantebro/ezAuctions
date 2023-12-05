@@ -67,6 +67,19 @@ public class Auction implements Runnable {
 		return remainingSeconds;
 	}
 
+	/***
+	 * Sets the remaining time to at least n seconds.
+	 */
+	public void clampRemainingSeconds(@NotNull ConfigController config) {
+		// Get the minimum time
+		int minimumTime = config.getConfig().getInt("auctions.minimum-clamp-time");
+
+		// If the remaining time is less than the minimum time, set it to the minimum time
+		if (remainingSeconds < minimumTime) {
+			remainingSeconds = minimumTime;
+		}
+	}
+
 	public boolean isCompleted() {
 		return !running;
 	}

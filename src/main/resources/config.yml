@@ -115,6 +115,9 @@ auctions:
     # Maximum starting price for an auction. 0 means any amount
     starting-price: 0
 
+  # When a player bids, remaining time is set to at least this value
+  minimum-clamp-time: 20
+
 # They use the same settings as auctions
 sealed-auctions:
   # Should we enable sealed auctions (bids don't show in chat)
