@@ -332,8 +332,15 @@ public final class AuctionData {
 				amount = Integer.parseInt(amountString);
 				double amountInInventory = ItemHelper.getAmountOfItemInInventory(player, item);
 
-				if (amount <= 0 || amount > amountInInventory)
+				if (amount <= 0)
 					throw new IllegalArgumentException();
+
+				if (amount > amountInInventory) {
+					messages.sendMessage(player, "command.auction.start.not-enough-items",
+							Placeholder.unparsed("entered", String.valueOf(amount)),
+							Placeholder.unparsed("held", String.valueOf((int) amountInInventory)));
+					return false;
+				}
 			} catch (Exception e) {
 				messages.sendMessage(player, "command.auction.start.invalid-amt");
 				return false;

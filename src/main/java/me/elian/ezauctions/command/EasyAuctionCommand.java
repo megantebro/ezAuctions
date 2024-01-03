@@ -34,9 +34,9 @@ public class EasyAuctionCommand extends BaseCommand {
 	}
 
 	@Default
-	@Syntax("[price] [time]")
-	@CommandCompletion("開始価格")
-	public void auction(Player player, double price, @Default(value = "0") int time) {
+	@Syntax("[price] [amount]")
+	@CommandCompletion("開始価格 個数")
+	public void auction(Player player, double price, @Default(value = "0") int amount) {
 		// Calculate the increment
 		// by taking the smallest power of 10 that is greater than the price
 		// and dividing it by 10
@@ -44,6 +44,6 @@ public class EasyAuctionCommand extends BaseCommand {
 		double increment = Math.pow(10, Math.floor(Math.log10(price))) / 10;
 
 		// Execute the auction start command
-		auctionCommand.start(player, "hand", price, increment, 0, time);
+		auctionCommand.start(player, amount == 0 ? "hand" : String.valueOf(amount), price, increment, 0, 0);
 	}
 }
