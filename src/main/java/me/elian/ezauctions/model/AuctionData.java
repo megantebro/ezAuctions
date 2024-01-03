@@ -74,8 +74,14 @@ public final class AuctionData {
 		return startingPrice;
 	}
 
-	public double getIncrementPrice() {
-		return incrementPrice;
+	public double getIncrementPrice(double highestBidAmount) {
+		//double incrementPrice = auction.getAuctionData().getIncrementPrice();
+		// 最大入札価格の10%を最低入札価格とする
+		// Calculate the increment
+		// by taking the smallest power of 10 that is greater than the price
+		// and dividing it by 10
+		// For example: 100 -> 100, 6500 -> 1000, 999 -> 100, 1000 -> 1000, 12950 -> 10000
+		return Math.pow(10, Math.floor(Math.log10(highestBidAmount))) / 10;
 	}
 
 	public double getAutoBuyPrice() {

@@ -253,7 +253,7 @@ public class MessageController extends FileHandler {
 				Formatter.number("highestbidamount", highestBidAmount),
 				Placeholder.unparsed("highestbidder", highestBidderName),
 				Placeholder.unparsed("highestbidderuuid", highestBidderUniqueId),
-				Formatter.number("increment", data.getIncrementPrice()),
+				Formatter.number("increment", data.getIncrementPrice(highestBidAmount)),
 				Formatter.number("starttime", data.getStartingAuctionTime()),
 				Formatter.number("remainingtime", remainingSeconds),
 				Formatter.number("autobuy", data.getAutoBuyPrice()),

@@ -25,14 +25,14 @@ public class BidList {
 		// if not sealed, simply return the highest bid + increment or starting price if no bids
 		if (!auction.getAuctionData().isSealed()) {
 			return bids.isEmpty() ? auction.getAuctionData().getStartingPrice() :
-					highestBid.amount() + auction.getAuctionData().getIncrementPrice();
+					highestBid.amount() + auction.getAuctionData().getIncrementPrice(highestBid.amount());
 		}
 
 		// if sealed, return starting price or player's highest bid + increment if they already bid
 		Bid highestBidForPlayer = getHighestBidForPlayer(auctionPlayer);
 
 		return highestBidForPlayer == null ? auction.getAuctionData().getStartingPrice() :
-				highestBidForPlayer.amount() + auction.getAuctionData().getIncrementPrice();
+				highestBidForPlayer.amount() + auction.getAuctionData().getIncrementPrice(highestBidForPlayer.amount());
 	}
 
 	public Bid getHighestBidForPlayer(AuctionPlayer auctionPlayer) {
