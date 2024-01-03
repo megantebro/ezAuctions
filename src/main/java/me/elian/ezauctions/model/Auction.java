@@ -13,7 +13,9 @@ import net.kyori.adventure.text.minimessage.tag.resolver.Formatter;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
+import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Sound;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
@@ -104,6 +106,8 @@ public class Auction implements Runnable {
 		}
 
 		loadAuctionData(auctionData);
+		// 全員にベルの音を鳴らす
+		Bukkit.getOnlinePlayers().forEach(player -> player.playSound(player.getLocation(), Sound.BLOCK_BELL_USE, 1, 2));
 		messages.broadcastAuctionMessage(playerController.getOnlinePlayers(),
 				this, false, "auction.info");
 		scoreboard.createForAuction(this, playerController.getOnlinePlayers());
